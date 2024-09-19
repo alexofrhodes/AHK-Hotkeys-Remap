@@ -43,7 +43,9 @@ global ScriptName := StrSplit(A_ScriptName, ".")[1]
 global SavedHotkeys := []
 global MyGui := Gui("+Resize") 
 
+A_TrayMenu.Add
 A_TrayMenu.Add("Set Hotkeys", SetHotkeys)
+A_TrayMenu.SetIcon("Set Hotkeys", "hotkey.ico")
 
 AddHotkey(FunctionName, INI_Key, GUI_Text) {
     global SavedHotkeys
