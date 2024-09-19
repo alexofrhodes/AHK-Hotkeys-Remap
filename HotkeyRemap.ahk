@@ -45,7 +45,8 @@ global MyGui := Gui("+Resize")
 
 A_TrayMenu.Add
 A_TrayMenu.Add("Set Hotkeys", SetHotkeys)
-A_TrayMenu.SetIcon("Set Hotkeys", "hotkey.ico")
+if FileExist("hotkey.ico")
+    A_TrayMenu.SetIcon("Set Hotkeys", "hotkey.ico")
 
 AddHotkey(FunctionName, INI_Key, GUI_Text) {
     global SavedHotkeys
