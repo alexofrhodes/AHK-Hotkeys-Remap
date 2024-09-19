@@ -1,17 +1,16 @@
 
 Modified from solution by Datapoint   https://www.autohotkey.com/boards/viewtopic.php?t=114887  
 so that 
-> it can be used by #Include
-> it can handle multiple scripts
+- it can be used by #Include
+- it can handle multiple scripts
 
-https://github.com/alexofrhodes
-anastasioualex@gmail.com
-https://www.youtube.com/@anastasioualex
+https://github.com/alexofrhodes  
+anastasioualex@gmail.com  
+https://www.youtube.com/@anastasioualex  
 
 Example:
 
-main.ahk
-
+    ; main.ahk
     #Include HotkeyRemap.ahk
 
     ; Add hotkeys first

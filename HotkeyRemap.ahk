@@ -1,21 +1,19 @@
 /* Readme
 
-Solution by Datapoint   https://www.autohotkey.com/boards/viewtopic.php?t=114887
+Solution by Datapoint   https://www.autohotkey.com/boards/viewtopic.php?t=114887  
 
 Modified by AlexOfRhodes so that 
-> it can be used by #Include
-> it can handle multiple scripts
+- it can be used by #Include  
+- it can handle multiple scripts 
 
-https://github.com/alexofrhodes
-anastasioualex@gmail.com
+https://github.com/alexofrhodes  
+anastasioualex@gmail.com  
 
 Example:
 
-main.ahk
-
+    ; main.ahk
     #Include HotkeyRemap.ahk
 
-    ; Add hotkeys first
     AddHotkey("FunctionA", "FuncA_Hotkey", "Activate Function A")
     AddHotkey("FunctionB", "FuncB_Hotkey", "Activate Function B")
     AddHotkey("CloseApp", "CloseApp_Hotkey", "Close Application")
