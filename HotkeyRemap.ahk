@@ -134,29 +134,33 @@ OK_Click(*) {
     }
 }
 
-Cancel_Click(*){
+Cancel_Click(*) {
     global remapGui
-    remapGui.Destroy
+    remapGui.Hide() ; Hide the GUI instead of destroying it
 }
 
 ResetHotkeys(*) {
-    global SavedHotkeys, ScriptName
+    global SavedHotkeys, ScriptName, remapGui
 
-    ans := MsgBox("Can not be undone. Proceed?","Reset Hotkeys","0x4")
+    ans := MsgBox("Cannot be undone. Proceed?", "Reset Hotkeys", "0x4")
     if ans = "No"
         return
 
+    ; Disable all current hotkeys and clear their assignments
     for i, MyHotkey in SavedHotkeys {
-        if MyHotkey.AssignedKey  != "" {
-            Hotkey MyHotkey.AssignedKey, "Off"  
-            MyHotkey.AssignedKey := ""  
-            ; IniWrite MyHotkey.AssignedKey, A_ScriptDir "\Hotkeys.ini", "Hotkeys", MyHotkey.INI_Key
+        if MyHotkey.AssignedKey != "" {
+            Hotkey MyHotkey.AssignedKey, "Off"
+            MyHotkey.AssignedKey := ""
             IniWrite MyHotkey.AssignedKey, A_ScriptDir "\Hotkeys.ini", ScriptName, MyHotkey.INI_Key
         }
+        ; Clear the value of the GUI control
+        MyHotkey.GUI_CtrlObj.Value := ""
     }
+
     MsgBox "All hotkeys have been reset."
-    remapGui.Destroy
+    remapGui.Title := "Set 0 of " . SavedHotkeys.Length . " available hotkeys"
 }
+
 
 ; ======================================================================================================================
 remapGui_Size(GuiObj, MinMax, Width, Height) {
