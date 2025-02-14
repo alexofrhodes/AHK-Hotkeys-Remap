@@ -102,13 +102,16 @@ HotkeyRemap() {
         }
     }
     remapGui.Title := "Set " . SetHotkeyCount . " of " . SavedHotkeys.Length . " available hotkeys"
+    remapgui.Opt("+AlwaysOnTop" )
 
+    ; show immediately if there are hotkeys that are not set
     if HK_NOT_SET
         SetHotkeys()
 }
 
 SetHotkeys(*) {
     global remapGui
+    
     remapGui.Show("h500")
     OnMessage(0x0115, OnScroll) ; WM_VSCROLL
     ; OnMessage(0x0114, OnScroll) ; WM_HSCROLL
@@ -135,14 +138,15 @@ OK_Click(*) {
 }
 
 Cancel_Click(*) {
-    global remapGui
+    global 
     remapGui.Hide() ; Hide the GUI instead of destroying it
 }
 
 ResetHotkeys(*) {
-    global SavedHotkeys, ScriptName, remapGui
-
-    ans := MsgBox("Cannot be undone. Proceed?", "Reset Hotkeys", "0x4")
+    global 
+    ; remapGui.Hide()
+    ans := MsgBox("Cannot be undone. Proceed?", "Reset Hotkeys", "0x4 0x1000")
+    ; remapGui.Show()
     if ans = "No"
         return
 
@@ -157,7 +161,7 @@ ResetHotkeys(*) {
         MyHotkey.GUI_CtrlObj.Value := ""
     }
 
-    MsgBox "All hotkeys have been reset."
+    ; MsgBox("All hotkeys have been reset.",, 0x1000)
     remapGui.Title := "Set 0 of " . SavedHotkeys.Length . " available hotkeys"
 }
 

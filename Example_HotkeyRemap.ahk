@@ -1,4 +1,7 @@
+
 #Requires AutoHotkey v2
+Persistent
+
 #Include HotkeyRemap.ahk
 
 AddHotkey("FunctionA", "FuncA_Hotkey", "Activate Function A")
